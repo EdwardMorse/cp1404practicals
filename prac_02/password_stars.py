@@ -10,6 +10,12 @@ def main():
 
 def get_valid_password():
     """Return a valid password."""
+    password = get_password()
+    return password
+
+# Refactored 4 lines.
+def get_password():
+    """Return a valid password."""
     password = input("Enter password: ")
     while len(password) < 8:
         print("Password must be at least 8 characters long")
