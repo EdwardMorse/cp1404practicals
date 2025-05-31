@@ -1,9 +1,11 @@
 """
 Password function
+Gets a password of a minimum length and displays the hidden password
 """
 
 
 def main():
+    """Combine the valid password and print the hidden password."""
     password = get_valid_password()
     print_hidden_password(password)
 
