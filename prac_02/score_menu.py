@@ -13,13 +13,14 @@ def main():
     choice = input("> ").upper()
     while choice != "Q":
         if choice == "G":
-            get_valid_score()
+            score = get_valid_score()
         elif choice == "P":
             get_score_result(score)
+            print(f"The score of {score} is {get_score_result(score)}.")
         elif choice == "S":
             print_stars(score)
         else:
-            print("Invalid score.")
+            print("Invalid input.")
         print("Menu: ")
         choice = input("> ").upper()
     print("Farewell.")
@@ -27,6 +28,9 @@ def main():
 
 def get_valid_score():
     score = int(input("Enter your score: "))
+    while score < 0 or score > 100:
+        print("Invalid. Your score must be between 0 and 100")
+        score = int(input("Enter score: "))
     return score
 
 
