@@ -1,4 +1,5 @@
 """
+CP1404 - Practical
 Files program: Using different techniques to read files
 """
 
