@@ -18,7 +18,7 @@ def main():
     print(visual_basic)
     print("The dynamically typed languages are: ")
     for language in languages:
-        if language.is_dynamic():
+        if language.is_dynamic().lower:
             print(language.name)
 
 
