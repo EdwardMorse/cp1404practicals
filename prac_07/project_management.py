@@ -3,6 +3,8 @@ Estimated time = 120 mins
 Actual time = 60 mins
 """
 
+from project import ProjectManagement
+
 MENU = "- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n- (A)dd new project\n- (U)pdate project\n- (Q)uit"
 
 
@@ -39,3 +41,24 @@ def get_valid_input(prompt, error_message):
         print(error_message)
         user_input = input(prompt)
     return user_input
+
+
+def load_file(projects, filename):
+    """Loads projects from the file."""
+    with open(filename, "r") as in_file:
+        in_file.readline()
+        for line in in_file:
+            parts = line.strip().split("\t")
+            project = ProjectManagement(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
+            projects.append(project)
+        print(f"{filename} loaded.")
+
+
+def save_file(contents, filename):
+    """Saves projects to the file."""
+    with open(filename, "w", encoding="utf-8") as out_file:
+        for content in contents:
+            print(
+                f"{content.name}\t{content.start_date}\t{content.priority}\t{content.cost_estimate}\t{content.completion_percentage}",
+                file=out_file)
+        print(f"Projects are saved to {filename}.")
