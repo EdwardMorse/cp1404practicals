@@ -13,10 +13,10 @@ def main():
     while menu_selection != "q":
         if menu_selection == "l":
             filename = get_valid_input("Filename: ", "Filename cannot be blank")
-            # load_file(projects, filename)
+            load_file(projects, filename)
         elif menu_selection == "s":
             filename = get_valid_input("Filename: ", "Filename cannot be blank")
-            # save_file(projects, filename)
+            save_file(projects, filename)
         elif menu_selection == "d":
             display_projects(projects)
         elif menu_selection == "f":
@@ -30,3 +30,12 @@ def main():
         print(MENU)
         menu_selection = input(">>> ").lower()
     print("Thank you for using custom-built project management software.")
+
+
+def get_valid_input(prompt, error_message):
+    """Get a valid input from the user."""
+    user_input = input(prompt)
+    while user_input == "":
+        print(error_message)
+        user_input = input(prompt)
+    return user_input
