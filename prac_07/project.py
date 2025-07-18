@@ -16,7 +16,7 @@ class ProjectManagement:
 
     def __str__(self):
         """Returns a string representation of the project."""
-        return f"{self.name}, start: {self.start_date}, priority {self.priority}, estimate: ${self.cost_estimate:.2f}, completion: {self.completion_percentage:.2f}%"
+        return f"{self.name}, start: {self.start_date}, priority {self.priority}, estimate: ${self.cost_estimate:,.2f}, completion: {self.completion_percentage:.2f}%"
 
     def __lt__(self, other):
         """Compare projects based on priority."""
