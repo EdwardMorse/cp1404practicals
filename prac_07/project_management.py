@@ -1,6 +1,6 @@
 """CP1404 practical 7 project management program
 Estimated time = 120 mins
-Actual time = 60 mins
+Actual time = 4hrs
 """
 
 from project import ProjectManagement
