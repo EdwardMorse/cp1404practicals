@@ -78,7 +78,6 @@ def display_projects(projects):
         print(f"\t{project}")
 
 
-
 def add_new_project(projects):
     """Adds a new project."""
     print("Let's add a new project.")
@@ -113,10 +112,20 @@ def get_valid_number(prompt, maximum_value):
 
 def filter_projects_by_date(projects):
     """Filter projects by date."""
+    date_string = get_valid_input("")
 
 
 def update_projects(projects):
     """Update projects."""
+    for index, project in enumerate(projects):
+        print(f"{index} {project}")
+    index = get_valid_number("Project choice: ", len(projects) - 1)
+    print(projects[index])
+    new_percentage = get_valid_number("New Percentage: ", 100)
+    new_priority = get_valid_number("New Priority: ", 10)
+    projects[index].priority = new_priority
+    projects[index].percentage_completed = new_percentage
+    print(f"Project {index} is up to date.")
 
 
 main()
