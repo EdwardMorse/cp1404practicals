@@ -5,6 +5,7 @@ Actual time = 60 mins
 
 from project import ProjectManagement
 import math
+import datetime
 
 MENU = "- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n- (A)dd new project\n- (U)pdate project\n- (Q)uit"
 
@@ -82,9 +83,9 @@ def add_new_project(projects):
     """Adds a new project."""
     print("Let's add a new project.")
     name = get_valid_input("Name: ", "Name cannot be blank.")
-    start_date = get_valid_input("Start date (dd/mm/yy): ", "Start date cannot be blank.")
+    start_date = get_valid_input("Start date (dd/mm/yyyy): ", "Start date cannot be blank.")
     priority = get_valid_input("Priority: ", "Priority cannot be blank.")
-    cost_estimate = get_valid_input("Cost estimate: ", math.inf)
+    cost_estimate = get_valid_number("Cost estimate: ", math.inf)
     completion_percentage = get_valid_number("Percent complete: ", 100)
     new_project = ProjectManagement(name, start_date, int(priority), float(cost_estimate), int(completion_percentage))
     projects.append(new_project)
@@ -112,7 +113,17 @@ def get_valid_number(prompt, maximum_value):
 
 def filter_projects_by_date(projects):
     """Filter projects by date."""
-    date_string = get_valid_input("")
+    date_string = get_valid_input("Show projects that start after date (dd/mm/yyyy): ", "Date cannot be blank.")
+    date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    projects_after_date = [project for project in projects if
+                           datetime.datetime.strptime(project.start_date, "%d/%m/%Y").date() > date]
+    projects_after_date.sort(key=lambda project: datetime.datetime.strptime(project.start_date, "%d/%m/%Y"),
+                             reverse=True)
+    if projects_after_date:
+        for project in projects_after_date:
+            print(f"\t{project}")
+    else:
+        print("There are no projects after the given date.")
 
 
 def update_projects(projects):
@@ -124,7 +135,7 @@ def update_projects(projects):
     new_percentage = get_valid_number("New Percentage: ", 100)
     new_priority = get_valid_number("New Priority: ", 10)
     projects[index].priority = new_priority
-    projects[index].percentage_completed = new_percentage
+    projects[index].completion_percentage = new_percentage
     print(f"Project {index} is up to date.")
 
 
