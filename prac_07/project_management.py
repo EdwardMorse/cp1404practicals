@@ -62,3 +62,19 @@ def save_file(contents, filename):
                 f"{content.name}\t{content.start_date}\t{content.priority}\t{content.cost_estimate}\t{content.completion_percentage}",
                 file=out_file)
         print(f"Projects are saved to {filename}.")
+
+
+def display_projects(projects):
+    """Display projects sorted by priority and completion percentage."""
+    projects.sort()
+    completed_projects = [project for project in projects if project.is_completed()]
+    incompleted_projects = [project for project in projects if not project.is_completed()]
+    print("Completed projects: ")
+    for project in completed_projects:
+        print(f"\t{project}")
+    print("Incompleted projects: ")
+    for project in incompleted_projects:
+        print(f"\t{project}")
+
+
+main()
