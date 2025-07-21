@@ -9,6 +9,7 @@ FILENAME = "guitars.csv"
 
 
 def main():
+    """Load guitars from file."""
     guitars = []
     with open(FILENAME, "r+") as in_file:
         for line in in_file:
