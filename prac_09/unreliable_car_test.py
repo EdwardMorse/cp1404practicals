@@ -5,6 +5,7 @@ Unreliable Car Test
 
 from prac_09.unreliable_car import UnreliableCar
 
+
 def main():
     """Test unreliable cars."""
     good_car = UnreliableCar("Toyota", 100, 90)
